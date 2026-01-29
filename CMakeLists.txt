@@ -20,6 +20,7 @@ add_executable(main
     src/save_bin_snap.cpp
     src/replay_bin_snap.cpp
     src/periodic_save.cpp
+    src/log_f.cpp
 )
 
 

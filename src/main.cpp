@@ -2,6 +2,7 @@
 #include <iostream>
 #include <version>
 #include "OrderBook.h"
+#include "log_f.h"
 
 #if !defined(__cpp_lib_jthread)
 # error "This program requires C++20. Please enable C++20 support in compiler."
@@ -25,6 +26,9 @@ int main() {
 
     // Print the orderbook
     print_orderbook(orderbook);
+
+    log_f("testinggggg");
+
 
     std::jthread save_thread(periodic_save, std::ref(orderbook), "ob.txt", 2);
 
