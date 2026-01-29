@@ -1,5 +1,6 @@
 #include "add_bid.h"
 #include "OrderBook.h"
+#include "log_f.h"
 
 void add_bid(double price, const char* title, int orderid, uint16_t prob_basis_point, uint32_t trader_id, bool active, unsigned char side) {
     Order new_order;
@@ -12,5 +13,6 @@ void add_bid(double price, const char* title, int orderid, uint16_t prob_basis_p
     new_order.side = side;
 
     orderbook.push_back(new_order);
+    log_f("New Order successfully added");
 }
 
