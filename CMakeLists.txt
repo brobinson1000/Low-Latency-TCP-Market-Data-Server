@@ -11,6 +11,12 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 include_directories(${CMAKE_SOURCE_DIR}/include)
 
+include_directories(
+    ${CMAKE_SOURCE_DIR}/include
+    /home/bdookie/Boost/boost_1_90_0
+)
+
+
 
 add_executable(main
     src/main.cpp
@@ -21,8 +27,10 @@ add_executable(main
     src/replay_bin_snap.cpp
     src/periodic_save.cpp
     src/log_f.cpp
+    src/handle.cpp
 )
 
+target_link_libraries(main pthread)
 
 set(EXECUTABLE_OUTPUT_PATH ${CMAKE_BINARY_DIR}/bin)
 
