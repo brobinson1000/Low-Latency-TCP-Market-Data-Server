@@ -5,6 +5,8 @@
 #include <mutex>
 #include <add_bid.h>
 #include <resolve_bid.h>
+#include <print_orderbook.h>
+#include <OrderBook.h>
 #include <handle.h>
 
 using boost::asio::ip::tcp;
@@ -50,7 +52,11 @@ void handle_client(tcp::socket socket) {
                     (side));
                 }
             }
-
+    
+            // TEST
+            if (cmd == "PRINT") {
+                print_orderbook(orderbook);
+            }
             else if (cmd  == "RESOLVE") {
                 int orderid;
                 bool success;
