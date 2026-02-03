@@ -1,10 +1,11 @@
 #pragma once
 
 #include <cstdint>
+#include <string>
 
 struct Order {
     double price;
-    const char *title;
+    std::string title;
     int orderid;
     uint16_t prob_basis_point;
     uint32_t trader_id;

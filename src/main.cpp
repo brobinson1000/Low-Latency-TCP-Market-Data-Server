@@ -12,9 +12,9 @@
 using boost::asio::ip::tcp;
 
 
-
-std::vector<Order> orderbook;
+std::unordered_map<int, Order> orderbook;
 std::mutex orderbook_mutex;
+
 
 int main() {
 

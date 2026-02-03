@@ -12,7 +12,7 @@
 using boost::asio::ip::tcp;
 
 
-// orderbook_mutex obj to avoid data race on orderbook vector
+// orderbook_mutex obj to avoid data race on orderbook unordered_map
 extern std::mutex orderbook_mutex;
 
 void handle_client(tcp::socket socket) {
@@ -55,7 +55,14 @@ void handle_client(tcp::socket socket) {
     
             // TEST
             if (cmd == "PRINT") {
+                std::lock_guard<std::mutex> lock(orderbook_mutex);
                 print_orderbook(orderbook);
+            }
+            if (cmd == "GET_ORDER") {
+                int orderid;
+
+                iss >> orderid;
+                //get_order(orderid);
             }
             else if (cmd  == "RESOLVE") {
                 int orderid;

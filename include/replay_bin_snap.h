@@ -1,9 +1,9 @@
 #pragma once
 
 #include <string>
-#include <vector>
+#include <unordered_map>
 #include "Order.h"
 
-void replay_bin_snap(std::vector<Order>& orderbook, const std::string& filepath);
+void replay_bin_snap(const std::unordered_map<int, Order>& orderbook, const std::string& filepath);
 
 
