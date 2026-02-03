@@ -4,6 +4,7 @@
 #include <string>
 #include <mutex>
 #include <add_bid.h>
+#include <get_order.h>
 #include <resolve_bid.h>
 #include <print_orderbook.h>
 #include <OrderBook.h>
@@ -62,7 +63,7 @@ void handle_client(tcp::socket socket) {
                 int orderid;
 
                 iss >> orderid;
-                //get_order(orderid);
+                get_order(orderid);
             }
             else if (cmd  == "RESOLVE") {
                 int orderid;

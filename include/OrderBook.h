@@ -13,4 +13,5 @@ void print_orderbook(const std::unordered_map<int, Order>& orderbook);
 void save_bin_snap(const std::unordered_map<int, Order>& orderbook, const std::string& filepath);
 void replay_bin_snap(const std::unordered_map<int, Order>& orderbook, const std::string& filepath);
 void periodic_save(const std::unordered_map<int, Order>& orderbook, const std::string& filepath, int interval_minutes);
+void get_order(int orderid);
 

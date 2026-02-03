@@ -28,6 +28,7 @@ add_executable(main
     src/periodic_save.cpp
     src/log_f.cpp
     src/handle.cpp
+    src/get_order.cpp
 )
 
 target_link_libraries(main pthread)
