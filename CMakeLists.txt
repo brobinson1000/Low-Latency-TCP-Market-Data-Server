@@ -29,6 +29,7 @@ add_executable(main
     src/log_f.cpp
     src/handle.cpp
     src/get_order.cpp
+    src/delete_order.cpp
 )
 
 target_link_libraries(main pthread)
