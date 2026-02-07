@@ -5,10 +5,12 @@
 #include <mutex>
 #include <add_bid.h>
 #include <get_order.h>
+#include <delete_order.h>
 #include <resolve_bid.h>
 #include <print_orderbook.h>
 #include <OrderBook.h>
 #include <handle.h>
+
 
 using boost::asio::ip::tcp;
 
@@ -47,6 +49,17 @@ void handle_client(tcp::socket socket) {
 
                 iss >> price >> title >> orderid >> prob_basis_point >> trader_id >> active >> side;
 
+                
+                // test
+                std::cout << "Price: " << price << std::endl;
+                std::cout << "Title: " << title << std::endl;
+                std::cout << "Order ID: " << orderid << std::endl;
+                std::cout << "Probability Basis Point: " << prob_basis_point << std::endl;
+                std::cout << "Trader ID: " << trader_id << std::endl;
+                std::cout << "Active: " << active << std::endl;
+                std::cout << "Side: " << side << std::endl;
+                
+        
                 {
                     std::lock_guard<std::mutex> lock(orderbook_mutex);
                     add_bid(price, title.c_str(), orderid, prob_basis_point, trader_id, active, static_cast<unsigned char>
@@ -64,6 +77,14 @@ void handle_client(tcp::socket socket) {
 
                 iss >> orderid;
                 get_order(orderid);
+            }
+            if (cmd == "DELETE_ORDER") {
+                int orderid;
+                iss >> orderid;
+                {
+                    std::lock_guard<std::mutex> lock(orderbook_mutex);
+                    delete_order(orderid);
+                }
             }
             else if (cmd  == "RESOLVE") {
                 int orderid;

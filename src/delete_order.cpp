@@ -5,10 +5,10 @@
 
 void delete_order(int orderid) {
     auto it = orderbook.find(orderid);
-    if ( it != orderbook.end()) {
-        orderbook.erase(orderid);
-    } else {
-        log_f("Order not found");
-    }
+    if (it != orderbook.end()) {
+            orderbook.erase(it);
+            log_f("Order deleted");
+        } else {
+            log_f("Order Not Found");
+        }
 };
-
