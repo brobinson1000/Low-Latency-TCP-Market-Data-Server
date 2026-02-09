@@ -7,7 +7,7 @@
 extern std::unordered_map<int, Order> orderbook;
 
 // Function declarations
-void add_bid(double price, const char* title, int orderid, uint16_t prob_basis_point, uint32_t trader_id, bool active, unsigned char side);
+void add_bid(double price, const char* title, uint16_t prob_basis_point, uint32_t trader_id, bool active, unsigned char side);
 void resolve_bid(int id, bool win);
 void print_orderbook(const std::unordered_map<int, Order>& orderbook);
 void save_bin_snap(const std::unordered_map<int, Order>& orderbook, const std::string& filepath);

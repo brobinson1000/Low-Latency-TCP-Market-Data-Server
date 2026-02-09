@@ -30,6 +30,7 @@ add_executable(main
     src/handle.cpp
     src/get_order.cpp
     src/delete_order.cpp
+    src/get_next_orderid.cpp
 )
 
 target_link_libraries(main pthread)

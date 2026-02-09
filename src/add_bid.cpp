@@ -3,12 +3,16 @@
 #include "log_f.h"
 #include <string>
 
-void add_bid(double price, const char* title, int orderid, uint16_t prob_basis_point,
-             uint32_t trader_id, bool active, unsigned char side) 
+
+
+void add_bid(double price, const char* title, uint16_t prob_basis_point,
+             uint32_t trader_id, bool active, unsigned char side)
 {
+    int orderid = get_next_orderid();  // Get the next orderid automatically
+
     Order new_order;
     new_order.orderid = orderid;
-    new_order.title = title;        
+    new_order.title = title;
     new_order.price = price;
     new_order.prob_basis_point = prob_basis_point;
     new_order.trader_id = trader_id;

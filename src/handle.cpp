@@ -41,19 +41,17 @@ void handle_client(tcp::socket socket) {
             if (cmd == "ADD") {
                 double price;
                 std::string title;
-                int orderid;
                 uint16_t prob_basis_point;
                 uint32_t trader_id;
                 bool active;
                 int side;
 
-                iss >> price >> title >> orderid >> prob_basis_point >> trader_id >> active >> side;
+                iss >> price >> title >> prob_basis_point >> trader_id >> active >> side;
 
                 
                 // test
                 std::cout << "Price: " << price << std::endl;
                 std::cout << "Title: " << title << std::endl;
-                std::cout << "Order ID: " << orderid << std::endl;
                 std::cout << "Probability Basis Point: " << prob_basis_point << std::endl;
                 std::cout << "Trader ID: " << trader_id << std::endl;
                 std::cout << "Active: " << active << std::endl;
@@ -62,7 +60,7 @@ void handle_client(tcp::socket socket) {
         
                 {
                     std::lock_guard<std::mutex> lock(orderbook_mutex);
-                    add_bid(price, title.c_str(), orderid, prob_basis_point, trader_id, active, static_cast<unsigned char>
+                    add_bid(price, title.c_str(),  prob_basis_point, trader_id, active, static_cast<unsigned char>
                     (side));
                 }
             }
